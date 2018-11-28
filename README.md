@@ -65,7 +65,8 @@ The image below represents the environment infrastructure:
 ![slide1.jpg](https://github.com/feitnomore/hyperledger-fabric-kubernetes/raw/master/images/slide1.jpg)
 
 
-*Note: It's important to have all the environment with the time in sync as we're dealing with transactions and shared storage. Please make sure you have all the time in sync. I encourage you to use NTP on your servers. On my environment I have `ntpdate` running in a cron job.* 
+*Note: It's important to have all the environment with the time in sync as we're dealing with transactions and shared storage. Please make sure you have all the time in sync. I encourage you to use NTP on your servers. On my environment I have `ntpdate` running in a cron job.*  
+*Note: Kafka, Zookeeper and NFS Server are running outside Kubernetes.*  
 
 ### Fabric Logical view
 
