@@ -1,0 +1,72 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: blockchain-orderer
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        name: orderer
+    spec:
+      volumes:
+      - name: fabricfiles
+        persistentVolumeClaim:
+          claimName: fabric-pvc
+
+      containers:
+      - name: orderer
+        image: hyperledger/fabric-orderer:amd64-1.3.0
+        command: ["sh", "-c", "orderer"]
+        env:
+        - name: TZ
+          value: "America/Sao_Paulo"
+        - name: ORDERER_CFG_PATH
+          value: /fabric/
+        - name: ORDERER_GENERAL_LEDGERTYPE
+          value: file
+        - name: ORDERER_FILELEDGER_LOCATION
+          value: /fabric/ledger/orderer
+        - name: ORDERER_GENERAL_BATCHTIMEOUT
+          value: 1s
+        - name: ORDERER_GENERAL_BATCHSIZE_MAXMESSAGECOUNT
+          value: "10"
+        - name: ORDERER_GENERAL_MAXWINDOWSIZE
+          value: "1000"
+        - name: CONFIGTX_GENERAL_ORDERERTYPE
+          value: kafka
+        - name: CONFIGTX_ORDERER_KAFKA_BROKERS
+          value: "kafka1.local.parisi.biz:9092,kafka2.local.parisi.biz:9092,kafka3.local.parisi.biz:9092,kafka4.local.parisi.biz:9092"
+        - name: ORDERER_KAFKA_RETRY_SHORTINTERVAL
+          value: 1s
+        - name: ORDERER_KAFKA_RETRY_SHORTTOTAL
+          value: 30s
+        - name: ORDERER_KAFKA_VERBOSE
+          value: "true"
+        - name: CONFIGTX_ORDERER_ADDRESSES
+          value: "blockchain-orderer:31010"
+        - name: ORDERER_GENERAL_LISTENADDRESS
+          value: 0.0.0.0
+        - name: ORDERER_GENERAL_LISTENPORT
+          value: "31010"
+        - name: ORDERER_GENERAL_LOGLEVEL
+          value: debug
+        - name: ORDERER_GENERAL_LOCALMSPDIR
+          value: /fabric/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp
+        - name: ORDERER_GENERAL_LOCALMSPID
+          value: OrdererMSP
+        - name: ORDERER_GENERAL_GENESISMETHOD
+          value: file
+        - name: ORDERER_GENERAL_GENESISFILE
+          value: /fabric/genesis.block
+        - name: ORDERER_GENERAL_GENESISPROFILE
+          value: initial
+        - name: ORDERER_GENERAL_TLS_ENABLED
+          value: "false"
+        - name: GODEBUG
+          value: "netdns=go"
+        - name: ORDERER_GENERAL_LEDGERTYPE
+          value: "ram"
+        volumeMounts:
+        - mountPath: /fabric
+          name: fabricfiles

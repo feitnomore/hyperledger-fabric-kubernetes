@@ -1,0 +1,102 @@
+---
+Organizations:
+
+    - &OrdererOrg
+        Name: OrdererOrg
+        ID: OrdererMSP
+        MSPDir: crypto-config/ordererOrganizations/example.com/msp
+        AdminPrincipal: Role.MEMBER
+
+    - &Org1
+        Name: Org1MSP
+        ID: Org1MSP
+        MSPDir: crypto-config/peerOrganizations/org1.example.com/msp
+        AdminPrincipal: Role.MEMBER
+        AnchorPeers:
+            - Host: blockchain-org1peer1
+              Port: 30110
+            - Host: blockchain-org1peer2
+              Port: 30110
+
+    - &Org2
+        Name: Org2MSP
+        ID: Org2MSP
+        MSPDir: crypto-config/peerOrganizations/org2.example.com/msp
+        AdminPrincipal: Role.MEMBER
+        AnchorPeers:
+            - Host: blockchain-org2peer1
+              Port: 30110
+            - Host: blockchain-org2peer2
+              Port: 30110
+
+    - &Org3
+        Name: Org3MSP
+        ID: Org3MSP
+        MSPDir: crypto-config/peerOrganizations/org3.example.com/msp
+        AdminPrincipal: Role.MEMBER
+        AnchorPeers:
+            - Host: blockchain-org3peer1
+              Port: 30110
+            - Host: blockchain-org3peer2
+              Port: 30110
+
+    - &Org4
+        Name: Org4MSP
+        ID: Org4MSP
+        MSPDir: crypto-config/peerOrganizations/org4.example.com/msp
+        AdminPrincipal: Role.MEMBER
+        AnchorPeers:
+            - Host: blockchain-org4peer1
+              Port: 30110
+            - Host: blockchain-org4peer2
+              Port: 30110
+
+Orderer: &OrdererDefaults
+
+    OrdererType: kafka
+    Addresses:
+        - blockchain-orderer:31010
+
+    BatchTimeout: 1s
+    BatchSize:
+        MaxMessageCount: 50
+        AbsoluteMaxBytes: 99 MB
+        PreferredMaxBytes: 512 KB
+
+    Kafka:
+        Brokers:
+            - kafka1.local.parisi.biz:9092
+            - kafka2.local.parisi.biz:9092
+            - kafka3.local.parisi.biz:9092
+            - kafka4.local.parisi.biz:9092
+
+    Organizations:
+
+Application: &ApplicationDefaults
+
+    Organizations:
+
+Profiles:
+
+    FourOrgsOrdererGenesis:
+        Orderer:
+            <<: *OrdererDefaults
+            Organizations:
+                - *OrdererOrg
+        Consortiums:
+            SampleConsortium:
+                Organizations:
+                    - *Org1
+                    - *Org2
+                    - *Org3
+                    - *Org4
+    FourOrgsChannel:
+        Consortium: SampleConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org1
+                - *Org2
+                - *Org3
+                - *Org4
+

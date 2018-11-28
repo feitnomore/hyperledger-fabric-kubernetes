@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: blockchain-ca
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: ca
+    spec:
+      volumes:
+      - name: fabricfiles
+        persistentVolumeClaim:
+          claimName: fabric-pvc
+
+      containers:
+      - name: ca
+        image: hyperledger/fabric-ca:amd64-1.3.0
+        command: ["sh", "-c", "fabric-ca-server start -b admin:adminpw -d"]
+        env:
+        - name: TZ
+          value: "America/Sao_Paulo"
+        - name: FABRIC_CA_SERVER_CA_NAME
+          value: "CA1"
+        - name: FABRIC_CA_SERVER_CA_CERTFILE
+          value: /fabric/crypto-config/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem
+        - name: FABRIC_CA_SERVER_CA_KEYFILE
+          value: /fabric/crypto-config/peerOrganizations/org1.example.com/ca/key.pem
+        - name: FABRIC_CA_SERVER_DEBUG
+          value: "true"
+        - name: FABRIC_CA_SERVER_TLS_ENABLED
+          value: "false"
+        - name: FABRIC_CA_SERVER_TLS_CERTFILE
+          value: /certs/ca0a-cert.pem
+        - name: FABRIC_CA_SERVER_TLS_KEYFILE
+          value: /certs/ca0a-key.pem
+        - name: GODEBUG
+          value: "netdns=go"
+        volumeMounts:
+        - mountPath: /fabric
+          name: fabricfiles

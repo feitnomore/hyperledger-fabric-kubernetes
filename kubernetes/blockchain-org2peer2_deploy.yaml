@@ -1,0 +1,114 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: blockchain-org2peer2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: org2peer2
+    spec:
+      volumes:
+      - name: fabricfiles
+        persistentVolumeClaim:
+          claimName: fabric-pvc
+      - name: dockersocket
+        hostPath:
+          path: /var/run/docker.sock
+
+      containers:
+      - name: peer
+        image: hyperledger/fabric-peer:amd64-1.3.0
+        command: ["sh", "-c", "peer node start"]
+        env:
+        - name: TZ
+          value: "America/Sao_Paulo"
+        - name: CORE_PEER_ADDRESSAUTODETECT
+          value: "true"
+        - name: CORE_PEER_ID
+          value: blockchain-org2peer2
+        - name: CORE_PEER_NETWORKID
+          value: nid1
+        - name: CORE_PEER_ADDRESS
+          value: blockchain-org2peer2:30110
+        - name: CORE_PEER_LISTENADDRESS
+          value: 0.0.0.0:30110
+        - name: CORE_PEER_EVENTS_ADDRESS
+          value: 0.0.0.0:30111
+        - name: CORE_PEER_GOSSIP_BOOTSTRAP
+          value: blockchain-org2peer2:30110
+        - name: CORE_PEER_GOSSIP_ENDPOINT
+          value: blockchain-org2peer2:30110
+        - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
+          value: blockchain-org2peer2:30110
+        - name: CORE_PEER_GOSSIP_ORGLEADER
+          value: "false"
+        - name: CORE_PEER_GOSSIP_USELEADERELECTION
+          value: "true"
+        - name: CORE_PEER_GOSSIP_SKIPHANDSHAKE
+          value: "true"
+        - name: CORE_PEER_COMMITTER_ENABLED
+          value: "false"
+        - name: CORE_PEER_PROFILE_ENABLED
+          value: "true"
+        - name: CORE_VM_ENDPOINT
+          value: unix:///host/var/run/docker.sock
+        - name: CORE_PEER_LOCALMSPID
+          value: Org2MSP
+        - name: CORE_PEER_MSPCONFIGPATH
+          value: /fabric/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp/
+        - name: CORE_PEER_VALIDATOR_CONSENSUS_PLUGIN
+          value: "pbft"
+        - name: CORE_PBFT_GENERAL_MODE
+          value: "classic"
+        - name: CORE_PBFT_GENERAL_N
+          value: "4"
+        - name: CORE_LOGGING_LEVEL
+          value: debug
+        - name: CORE_LOGGING_PEER
+          value: debug
+        - name: CORE_LOGGING_CAUTHDSL
+          value: debug
+        - name: CORE_LOGGING_GOSSIP
+          value: debug
+        - name: CORE_LOGGING_LEDGER
+          value: debug
+        - name: CORE_LOGGING_MSP
+          value: debug
+        - name: CORE_LOGGING_POLICIES
+          value: debug
+        - name: CORE_LOGGING_GRPC
+          value: debug
+        - name: CORE_PEER_TLS_ENABLED
+          value: "false"
+        - name: CORE_LEDGER_STATE_STATEDATABASE
+          value: "CouchDB"
+        - name: CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS
+          value: "localhost:5984"
+        - name: CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME
+          value: "hyperledgeruser"
+        - name: CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
+          value: "hyperledgerpass"
+        - name: FABRIC_CFG_PATH
+          value: /etc/hyperledger/fabric/
+        - name: ORDERER_URL
+          value: blockchain-orderer:31010
+        - name: GODEBUG
+          value: "netdns=go"
+        - name: CORE_VM_DOCKER_ATTACHSTDOUT
+          value: "true"
+        volumeMounts:
+        - mountPath: /fabric
+          name: fabricfiles
+        - mountPath: /host/var/run/docker.sock
+          name: dockersocket
+      - name: couchdb
+        image: hyperledger/fabric-couchdb:amd64-0.4.14
+        env:
+        - name: TZ
+          value: "America/Sao_Paulo"
+        - name: COUCHDB_USER
+          value: "hyperledgeruser"
+        - name: COUCHDB_PASSWORD
+          value: "hyperledgerpass"

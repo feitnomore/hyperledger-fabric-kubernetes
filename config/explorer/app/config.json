@@ -1,0 +1,200 @@
+{
+  "network-configs": {
+    "network-1": {
+      "version": "1.0",
+      "clients": {
+        "client-1": {
+          "tlsEnable": false,
+          "organization": "Org1MSP",
+          "channel": "channel1",
+          "credentialStore": {
+            "path": "./tmp/credentialStore_Org1/credential",
+            "cryptoStore": {
+              "path": "./tmp/credentialStore_Org1/crypto"
+            }
+          }
+        }
+      },
+      "channels": {
+        "channel1": {
+          "peers": {
+            "blockchain-org1peer1": {},
+            "blockchain-org2peer1": {},
+            "blockchain-org3peer1": {},
+            "blockchain-org4peer1": {},
+            "blockchain-org1peer2": {},
+            "blockchain-org2peer2": {},
+            "blockchain-org3peer2": {},
+            "blockchain-org4peer2": {}
+          },
+          "orderers": {
+            "blockchain-orderer" : {}
+          },
+          "connection": {
+            "timeout": {
+              "peer": {
+                "endorser": "6000",
+                "eventHub": "6000",
+                "eventReg": "6000"
+              }
+            }
+          }
+        }
+      },
+      "organizations": {
+        "Org1MSP": {
+          "mspid": "Org1MSP",
+          "fullpath": false,
+          "adminPrivateKey": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore"
+          },
+          "signedCert": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts"
+          }
+        },
+        "Org2MSP": {
+          "mspid": "Org2MSP",
+          "fullpath": false,
+          "adminPrivateKey": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/keystore"
+          },
+          "signedCert": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/signcerts"
+          }
+        },
+        "Org3MSP": {
+          "mspid": "Org3MSP",
+          "fullpath": false,
+          "adminPrivateKey": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp/keystore"
+          },
+          "signedCert": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp/signcerts"
+          }
+        },
+        "Org4MSP": {
+          "mspid": "Org4MSP",
+          "fullpath": false,
+          "adminPrivateKey": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org4.example.com/users/Admin@org4.example.com/msp/keystore"
+          },
+          "signedCert": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org4.example.com/users/Admin@org4.example.com/msp/signcerts"
+          }
+        },
+        "OrdererMSP": {
+          "mspid": "OrdererMSP",
+          "adminPrivateKey": {
+            "path":
+              "/fabric/crypto-config/ordererOrganizations/example.com/users/Admin@example.com/msp/keystore"
+          }
+        }
+      },
+      "peers": {
+        "blockchain-org1peer1": {
+          "tlsCACerts": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
+          },
+          "url": "grpc://blockchain-org1peer1:30110",
+          "eventUrl": "grpc://blockchain-org1peer1:30111",
+          "grpcOptions": {
+            "ssl-target-name-override": "peer0.org1.example.com"
+          }
+        },
+        "blockchain-org2peer1": {
+          "tlsCACerts": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt"
+          },
+          "url": "grpc://blockchain-org2peer1:30110",
+          "eventUrl": "grpc://blockchain-org2peer1:30111",
+          "grpcOptions": {
+            "ssl-target-name-override": "peer0.org2.example.com"
+          }
+        },
+        "blockchain-org3peer1": {
+          "tlsCACerts": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/tls/ca.crt"
+          },
+          "url": "grpc://blockchain-org3peer1:30110",
+          "eventUrl": "grpc://blockchain-org3peer1:30111",
+          "grpcOptions": {
+            "ssl-target-name-override": "peer0.org3.example.com"
+          }
+        },
+        "blockchain-org4peer1": {
+          "tlsCACerts": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org4.example.com/peers/peer0.org4.example.com/tls/ca.crt"
+          },
+          "url": "grpc://blockchain-org4peer1:30110",
+          "eventUrl": "grpc://blockchain-org4peer1:30111",
+          "grpcOptions": {
+            "ssl-target-name-override": "peer0.org4.example.com"
+          }
+        },
+        "blockchain-org1peer2": {
+          "tlsCACerts": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt"
+          },
+          "url": "grpc://blockchain-org1peer2:30110",
+          "eventUrl": "grpc://blockchain-org1peer2:30111",
+          "grpcOptions": {
+            "ssl-target-name-override": "peer1.org1.example.com"
+          }
+        },
+        "blockchain-org2peer2": {
+          "tlsCACerts": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/ca.crt"
+          },
+          "url": "grpc://blockchain-org2peer2:30110",
+          "eventUrl": "grpc://blockchain-org2peer2:30111",
+          "grpcOptions": {
+            "ssl-target-name-override": "peer1.org2.example.com"
+          }
+        },
+        "blockchain-org3peer2": {
+          "tlsCACerts": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org3.example.com/peers/peer1.org3.example.com/tls/ca.crt"
+          },
+          "url": "grpc://blockchain-org3peer2:30110",
+          "eventUrl": "grpc://blockchain-org3peer2:30111",
+          "grpcOptions": {
+            "ssl-target-name-override": "peer1.org3.example.com"
+          }
+        },
+        "blockchain-org4peer2": {
+          "tlsCACerts": {
+            "path":
+              "/fabric/crypto-config/peerOrganizations/org4.example.com/peers/peer1.org4.example.com/tls/ca.crt"
+          },
+          "url": "grpc://blockchain-org4peer2:30110",
+          "eventUrl": "grpc://blockchain-org4peer2:30111",
+          "grpcOptions": {
+            "ssl-target-name-override": "peer1.org4.example.com"
+          }
+        }
+      },
+      "orderers": {
+        "blockchain-orderer": {
+          "url": "grpc://blockchain-orderer:31010"
+        }
+      }
+    }
+  },
+  "configtxgenToolPath": "/fabric-path/workspace/fabric-samples/bin",
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: blockchain-explorer-db
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: explorer-db
+    spec:
+      volumes:
+      - name: fabricfiles
+        persistentVolumeClaim:
+          claimName: fabric-pvc
+
+      containers:
+      - name: postgres
+        image: postgres:10.4-alpine
+        env:
+        - name: TZ
+          value: "America/Sao_Paulo"
+        - name: DATABASE_DATABASE
+          value: fabricexplorer
+        - name: DATABASE_USERNAME
+          value: hppoc
+        - name: DATABASE_PASSWORD
+          value: password
+        volumeMounts:
+        - mountPath: /fabric
+          name: fabricfiles
