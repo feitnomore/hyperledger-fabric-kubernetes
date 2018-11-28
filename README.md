@@ -2523,7 +2523,7 @@ You can also click on transactions tab, and check for a transaction as below:
 
 ![slide7.jpg](https://github.com/feitnomore/hyperledger-fabric-kubernetes/raw/master/images/slide7.jpg)
 
-*Note: You can see here that the transactions got endorsed by all the 4 Organizations.*  
+*Note: You can see here that the transaction got endorsed by all the 4 Organizations.*  
 
 ## Reference Links
 
