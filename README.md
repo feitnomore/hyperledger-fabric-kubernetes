@@ -60,7 +60,7 @@ storage.local.parisi.biz
 
 The image below represents the environment infrastructure:  
 
-![slide1.jpg](https://github.com/feitnomore/<repo>/images/slide1.jpg)
+![slide1.jpg](https://github.com/feitnomore/hyperledger-fabric-kubernetes/raw/master/images/slide1.jpg)
 
 
 *Note: It's important to have all the environment with the time in sync as we're dealing with transactions and shared storage. Please make sure you have all the time in sync. I encourage you to use NTP on your servers. On my environment I have `ntpdate` running in a cron job.* 
@@ -87,7 +87,7 @@ blockchain-org4peer2
 
 The image below represents this logical view:  
  
-![slide2.jpg](https://github.com/feitnomore/<repo>/images/slide2.jpg)
+![slide2.jpg](https://github.com/feitnomore/hyperledger-fabric-kubernetes/raw/master/images/slide2.jpg)
 
 ### Explorer Logical view
 We're going to have Hyperledger Explorer as a WebUI for our environment. Hyperledger Explorer will run in 2 deployments as below:
@@ -98,16 +98,16 @@ blockchain-explorer-app
 
 The image below represents this logical view:  
  
-![slide3.jpg](https://github.com/feitnomore/<repo>/images/slide3.jpg)
+![slide3.jpg](https://github.com/feitnomore/hyperledger-fabric-kubernetes/raw/master/images/slide3.jpg)
 
 ### Detailed view
 Hyperledger Fabric Orderer will connect itself to the Kafka servers as image below:  
   
-![slide4.jpg](https://github.com/feitnomore/<repo>/images/slide4.jpg)
+![slide4.jpg](https://github.com/feitnomore/hyperledger-fabric-kubernetes/raw/master/images/slide4.jpg)
 
 Each Hyperledger Fabric Peer will have it's own CouchDB instance running as a sidecar and will connect to our NFS shared storage:  
 
-![slide5.jpg](https://github.com/feitnomore/<repo>/images/slide5.jpg)
+![slide5.jpg](https://github.com/feitnomore/hyperledger-fabric-kubernetes/raw/master/images/slide5.jpg)
 
 *Note: Although its not depicted above, CA, Orderer and Explorer deployments will also have access to the NFS shared storage as they need the artifacts that we're going to store there.*
 
@@ -1900,12 +1900,16 @@ export CORE_PEER_LOCALMSPID="Org1MSP"
 export CORE_PEER_MSPID="Org1MSP"
 export CORE_PEER_MSPCONFIGPATH="/fabric/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp"
 export CORE_PEER_ADDRESS="blockchain-org1peer1:30110"
+
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
+
 rm -rf /${CHANNEL_NAME}_newest.block
 export CORE_PEER_ADDRESS="blockchain-org1peer2:30110"
+
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
+
 rm -rf /${CHANNEL_NAME}_newest.block
 exit
 ```
@@ -1921,12 +1925,16 @@ export CORE_PEER_LOCALMSPID="Org2MSP"
 export CORE_PEER_MSPID="Org2MSP"
 export CORE_PEER_MSPCONFIGPATH="/fabric/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp"
 export CORE_PEER_ADDRESS="blockchain-org2peer1:30110"
+
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
+
 rm -rf /${CHANNEL_NAME}_newest.block
 export CORE_PEER_ADDRESS="blockchain-org2peer2:30110"
+
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
+
 rm -rf /${CHANNEL_NAME}_newest.block
 exit
 ```
@@ -1942,12 +1950,16 @@ export CORE_PEER_LOCALMSPID="Org3MSP"
 export CORE_PEER_MSPID="Org3MSP"
 export CORE_PEER_MSPCONFIGPATH="/fabric/crypto-config/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp"
 export CORE_PEER_ADDRESS="blockchain-org3peer1:30110"
+
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
+
 rm -rf /${CHANNEL_NAME}_newest.block
 export CORE_PEER_ADDRESS="blockchain-org3peer2:30110"
+
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
+
 rm -rf /${CHANNEL_NAME}_newest.block
 exit
 ```
@@ -1963,12 +1975,16 @@ export CORE_PEER_LOCALMSPID="Org4MSP"
 export CORE_PEER_MSPID="Org4MSP"
 export CORE_PEER_MSPCONFIGPATH="/fabric/crypto-config/peerOrganizations/org4.example.com/users/Admin@org4.example.com/msp"
 export CORE_PEER_ADDRESS="blockchain-org4peer1:30110"
+
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
+
 rm -rf /${CHANNEL_NAME}_newest.block
 export CORE_PEER_ADDRESS="blockchain-org4peer2:30110"
+
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
+
 rm -rf /${CHANNEL_NAME}_newest.block
 exit
 ```
@@ -1985,10 +2001,13 @@ export CHAINCODE_VERSION="1.0"
 export FABRIC_CFG_PATH="/etc/hyperledger/fabric"
 export CORE_PEER_MSPCONFIGPATH="/fabric/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp"
 export CORE_PEER_LOCALMSPID="Org1MSP"
+
 export CORE_PEER_ADDRESS="blockchain-org1peer1:30110"
 peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p chaincode_example02/
+
 export CORE_PEER_ADDRESS="blockchain-org1peer2:30110"
 peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p chaincode_example02/
+
 exit
 ```
 - Org2MSP  
@@ -2001,10 +2020,13 @@ export CHAINCODE_VERSION="1.0"
 export FABRIC_CFG_PATH="/etc/hyperledger/fabric"
 export CORE_PEER_MSPCONFIGPATH="/fabric/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp"
 export CORE_PEER_LOCALMSPID="Org2MSP"
+
 export CORE_PEER_ADDRESS="blockchain-org2peer1:30110"
 peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p chaincode_example02/
+
 export CORE_PEER_ADDRESS="blockchain-org2peer2:30110"
 peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p chaincode_example02/
+
 exit
 ```
 - Org3MSP  
@@ -2017,10 +2039,13 @@ export CHAINCODE_VERSION="1.0"
 export FABRIC_CFG_PATH="/etc/hyperledger/fabric"
 export CORE_PEER_MSPCONFIGPATH="/fabric/crypto-config/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp"
 export CORE_PEER_LOCALMSPID="Org3MSP"
+
 export CORE_PEER_ADDRESS="blockchain-org3peer1:30110"
 peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p chaincode_example02/
+
 export CORE_PEER_ADDRESS="blockchain-org3peer2:30110"
 peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p chaincode_example02/
+
 exit
 ```
 - Org4MSP  
@@ -2033,10 +2058,13 @@ export CHAINCODE_VERSION="1.0"
 export FABRIC_CFG_PATH="/etc/hyperledger/fabric"
 export CORE_PEER_MSPCONFIGPATH="/fabric/crypto-config/peerOrganizations/org4.example.com/users/Admin@org4.example.com/msp"
 export CORE_PEER_LOCALMSPID="Org4MSP"
+
 export CORE_PEER_ADDRESS="blockchain-org4peer1:30110"
 peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p chaincode_example02/
+
 export CORE_PEER_ADDRESS="blockchain-org4peer2:30110"
 peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p chaincode_example02/
+
 exit
 ```
 
@@ -2482,11 +2510,11 @@ kubectl port-forward $pod 8080:8080
 Now open your browser to [http://127.0.0.1:8080/](http://127.0.0.1:8080/).
 In the first window you can see your network status and transactions as below:  
 
-![slide6.jpg](https://github.com/feitnomore/<repo>/images/slide6.jpg)
+![slide6.jpg](https://github.com/feitnomore/hyperledger-fabric-kubernetes/raw/master/images/slide6.jpg)
 
 You can also click on transactions tab, and check for a transaction as below:  
 
-![slide7.jpg](https://github.com/feitnomore/<repo>/images/slide7.jpg)
+![slide7.jpg](https://github.com/feitnomore/hyperledger-fabric-kubernetes/raw/master/images/slide7.jpg)
 
 *Note: You can see here that the transactions got endorsed by all the 4 Organizations.*  
 
