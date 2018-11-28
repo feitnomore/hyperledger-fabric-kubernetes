@@ -215,12 +215,12 @@ After creating the file, let's apply it to our kubernetes cluster:
 kubectl apply -f kubernetes/fabric-tools.yaml
 ```
 
-Make sure the fabric-tools pod is running before we continue:
+Make sure the `fabric-tools` `Pod` is running before we continue:
 ```sh
 kubectl get pods
 ```
 
-Now, assuming `fabric-tools` pod is running, lets create a config directory on our shared filesystem to hold our files:
+Now, assuming `fabric-tools` `Pod` is running, let's create a config directory on our shared filesystem to hold our files:
 ```sh
 kubectl exec -it fabric-tools -- mkdir /fabric/config
 ```
