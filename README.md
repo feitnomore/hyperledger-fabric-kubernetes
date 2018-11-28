@@ -209,6 +209,7 @@ spec:
         - mountPath: /host/var/run/docker.sock
           name: dockersocket
 ```
+*Note: It's important to have the same timezone accross all network. Check TZ environment variable.*  
 
 After creating the file, let's apply it to our kubernetes cluster: 
 ```sh
@@ -2464,7 +2465,7 @@ spec:
           name: fabricfiles
 ```
 *Note: Again setting up the timezone as the reports might get impacted.*  
-*Note: This deployment will have access to the share filesystem as the startup script and config files are store there.*  
+*Note: This deployment will have access to the shared filesystem as the startup script and config files are store there.*  
 
 Now its time to apply our `Deployment`:
 ```sh
