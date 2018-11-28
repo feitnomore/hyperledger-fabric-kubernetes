@@ -2105,7 +2105,7 @@ kubectl exec -it $pod -- peer channel update -f /fabric/Org3MSPanchors.tx -c cha
 pod=$(kubectl get pods | grep blockchain-org4peer1 | awk '{print $1}')
 kubectl exec -it $pod -- peer channel update -f /fabric/Org4MSPanchors.tx -c channel1 -o blockchain-orderer:31010 
 ```
-*Note: This step is very important for the Hyperledger Fabric Service Discovery to work properly.*
+*Note: This step is very important for the Hyperledger Fabric Service Discovery to work properly.*  
 *Note: For each organization we only need to execute the peer channel update once.*  
 *Note: The command is executed on a peer that is on the same Organization as the Anchor file.*  
 
