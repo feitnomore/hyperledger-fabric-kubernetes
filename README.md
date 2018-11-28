@@ -390,14 +390,14 @@ kubectl cp config/chaincode/ fabric-tools:/fabric/config/
 1 - cryptogen  
 Time to generate our crypto material:
 ```sh
-kubectl exec -it fabric-tools /bin/bash
+kubectl exec -it fabric-tools -- /bin/bash
 cryptogen generate --config /fabric/config/crypto-config.yaml
 exit
 ```
 
 Now we're going to copy our files to the correct path and rename the key files:
 ```sh
-kubectl exec -it fabric-tools /bin/bash
+kubectl exec -it fabric-tools -- /bin/bash
 cp -r crypto-config /fabric/
 for file in $(find /fabric/ -iname *_sk); do echo $file; dir=$(dirname $file); mv ${dir}/*_sk ${dir}/key.pem; done
 exit
@@ -407,7 +407,7 @@ exit
 2 - configtxgen  
 Now we're going to copy the artifacts to the correct path and generate the genesis block:
 ```sh
-kubectl exec -it fabric-tools /bin/bash
+kubectl exec -it fabric-tools -- /bin/bash
 cp /fabric/config/configtx.yaml /fabric/
 cd /fabric
 configtxgen -profile FourOrgsOrdererGenesis -outputBlock genesis.block
@@ -417,7 +417,7 @@ exit
 3 - Anchor Peers  
 Lets create the Anchor Peers configuration files using configtxgen: 
 ```sh
-kubectl exec -it fabric-tools /bin/bash
+kubectl exec -it fabric-tools -- /bin/bash
 cd /fabric
 configtxgen -profile FourOrgsChannel -outputAnchorPeersUpdate ./Org1MSPanchors.tx -channelID channel1 -asOrg Org1MSP
 configtxgen -profile FourOrgsChannel -outputAnchorPeersUpdate ./Org2MSPanchors.tx -channelID channel1 -asOrg Org2MSP
@@ -430,7 +430,7 @@ exit
 4 - Fix Permissions  
 We need to fix the files permissions on our shared filesystem now:
 ```sh
-kubectl exec -it fabric-tools /bin/bash
+kubectl exec -it fabric-tools -- /bin/bash
 chmod a+rx /fabric/* -R
 exit
 ```
