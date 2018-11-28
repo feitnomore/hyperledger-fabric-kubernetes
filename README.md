@@ -4,7 +4,8 @@
 **Maintainers:** [feitnomore](https://github.com/feitnomore/)
 
 This is a simple guide to help you implement a complete Blockchain solution using [Hyperledger Fabric v1.3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/whatsnew.html) with [Hyperledger Explorer v0.3.7](https://www.hyperledger.org/projects/explorer) on top of a [Kubernetes](https://kubernetes.io) platform.
-This solution uses also [CouchDB](http://couchdb.apache.org/) as peer's backend, [Apache Kafka](https://kafka.apache.org/) topics for the orderers and a NFS Server *(Network file system)* to share data between the components.
+This solution uses also [CouchDB](http://couchdb.apache.org/) as peer's backend, [Apache Kafka](https://kafka.apache.org/) topics for the orderers and a NFS Server *(Network file system)* to share data between the components.  
+*Note: Kafka/Zookeeper are running outside Kubernetes.*  
 
 *WARNING:* Use it at your own risk.
 
