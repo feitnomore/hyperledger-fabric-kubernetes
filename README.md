@@ -30,7 +30,7 @@ kubenode01.local.parisi.biz
 kubenode02.local.parisi.biz
 kubenode03.local.parisi.biz
 ```
-*Note: This is a home Kubernetes environment however most of what is covered here should apply to any cloud provider that provides Kubernetes compatible services*  
+*Note: This is a home Kubernetes environment however most of what is covered here should apply to any cloud provider that provides Kubernetes compatible services.*  
 
 For Apache Zookeeper we'll have the following machines:
 ```sh
@@ -38,9 +38,9 @@ zookeeper1.local.parisi.biz
 zookeeper2.local.parisi.biz
 zookeeper3.local.parisi.biz
 ```
-*Note: Zookeeper is needed by Apache Kafka*  
+*Note: Zookeeper is needed by Apache Kafka.*  
 *Note: Apache Kafka should be 1.0 for Hyperledger compatibility.*  
-*Note: Check [this link](https://dzone.com/articles/how-to-setup-kafka-cluster) for a quick guide on Kafka/Zookeeper cluster*  
+*Note: Check [this link](https://dzone.com/articles/how-to-setup-kafka-cluster) for a quick guide on Kafka/Zookeeper cluster.*  
 
 For Apache Kafka we'll have the following machines:
 ```sh
@@ -49,8 +49,8 @@ kafka2.local.parisi.biz
 kafka3.local.parisi.biz
 kafka4.local.parisi.biz
 ```
-*Note 1: We're using Kafka 1.0 version for Hyperledger compatibility*  
-*Note 2: Check [this link](https://dzone.com/articles/how-to-setup-kafka-cluster) for a quick guide on Kafka/Zookeeper cluster* 
+*Note: We're using Kafka 1.0 version for Hyperledger compatibility.*  
+*Note: Check [this link](https://dzone.com/articles/how-to-setup-kafka-cluster) for a quick guide on Kafka/Zookeeper cluster.* 
 
 For the NFS Server we'll have:
 ```sh
@@ -596,7 +596,7 @@ spec:
         - mountPath: /fabric
           name: fabricfiles
 ```
-*Note: Because we're handling transactions, timezones needs to be in sync everywhere.*  
+*Note: Because we're dealing with transactions, timezones needs to be in sync everywhere.*  
 *Note: The Orderer also uses our shared filesystem.*  
 *Note: Orderer is using Kafka.*  
 *Note: Kafka Brokers previoulsy set on configtx are now listed under CONFIGTX_ORDERER_KAFKA_BROKERS environment variable.*  
@@ -752,7 +752,7 @@ spec:
         - name: COUCHDB_PASSWORD
           value: "hyperledgerpass"
 ```
-*Note: Because we're handling with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
+*Note: Because we're dealing with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
 *Note: CORE_PEER_GOSSIP_BOOTSTRAP, CORE_PEER_GOSSIP_ENDPOINT and CORE_PEER_GOSSIP_EXTERNALENDPOINT are critical for the Hyperledger Fabric Service Discovery to work.*  
 *Note: Volume dockersocket is used in order for the peer to have access to the docker daemon running on the host the peer is running, to be able to launch the chaincode container*  
 *Note: The chaincode container will be launched directly into Docker Daemon, and will not show up in Kubernetes.*  
@@ -877,7 +877,7 @@ spec:
           value: "hyperledgerpass"
 ```
 *Note: The peer uses our shared filesystem.*  
-*Note: Because we're handling with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
+*Note: Because we're dealing with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
 *Note: CORE_PEER_GOSSIP_BOOTSTRAP, CORE_PEER_GOSSIP_ENDPOINT and CORE_PEER_GOSSIP_EXTERNALENDPOINT are critical for the Hyperledger Fabric Service Discovery to work.*  
 *Note: Volume dockersocket is used in order for the peer to have access to the docker daemon running on the host the peer is running, to be able to launch the chaincode container*  
 *Note: The chaincode container will be launched directly into Docker Daemon, and will not show up in Kubernetes.*  
@@ -1061,7 +1061,7 @@ spec:
           value: "hyperledgerpass"
 ```
 *Note: The peer uses our shared filesystem.*  
-*Note: Because we're handling with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
+*Note: Because we're dealing with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
 *Note: CORE_PEER_GOSSIP_BOOTSTRAP, CORE_PEER_GOSSIP_ENDPOINT and CORE_PEER_GOSSIP_EXTERNALENDPOINT are critical for the Hyperledger Fabric Service Discovery to work.*  
 *Note: Volume dockersocket is used in order for the peer to have access to the docker daemon running on the host the peer is running, to be able to launch the chaincode container*  
 *Note: The chaincode container will be launched directly into Docker Daemon, and will not show up in Kubernetes.*  
@@ -1186,7 +1186,7 @@ spec:
           value: "hyperledgerpass"
 ```
 *Note: The peer uses our shared filesystem.*  
-*Note: Because we're handling with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
+*Note: Because we're dealing with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
 *Note: CORE_PEER_GOSSIP_BOOTSTRAP, CORE_PEER_GOSSIP_ENDPOINT and CORE_PEER_GOSSIP_EXTERNALENDPOINT are critical for the Hyperledger Fabric Service Discovery to work.*  
 *Note: Volume dockersocket is used in order for the peer to have access to the docker daemon running on the host the peer is running, to be able to launch the chaincode container*  
 *Note: The chaincode container will be launched directly into Docker Daemon, and will not show up in Kubernetes.*  
@@ -1371,7 +1371,7 @@ spec:
           value: "hyperledgerpass"
 ```
 *Note: The peer uses our shared filesystem.*  
-*Note: Because we're handling with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
+*Note: Because we're dealing with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
 *Note: CORE_PEER_GOSSIP_BOOTSTRAP, CORE_PEER_GOSSIP_ENDPOINT and CORE_PEER_GOSSIP_EXTERNALENDPOINT are critical for the Hyperledger Fabric Service Discovery to work.*  
 *Note: Volume dockersocket is used in order for the peer to have access to the docker daemon running on the host the peer is running, to be able to launch the chaincode container*  
 *Note: The chaincode container will be launched directly into Docker Daemon, and will not show up in Kubernetes.*  
@@ -1496,7 +1496,7 @@ spec:
           value: "hyperledgerpass"
 ```
 *Note: The peer uses our shared filesystem.*  
-*Note: Because we're handling with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
+*Note: Because we're dealing with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
 *Note: CORE_PEER_GOSSIP_BOOTSTRAP, CORE_PEER_GOSSIP_ENDPOINT and CORE_PEER_GOSSIP_EXTERNALENDPOINT are critical for the Hyperledger Fabric Service Discovery to work.*  
 *Note: Volume dockersocket is used in order for the peer to have access to the docker daemon running on the host the peer is running, to be able to launch the chaincode container*  
 *Note: The chaincode container will be launched directly into Docker Daemon, and will not show up in Kubernetes.*  
@@ -1680,7 +1680,7 @@ spec:
           value: "hyperledgerpass"
 ```
 *Note: The peer uses our shared filesystem.*  
-*Note: Because we're handling with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
+*Note: Because we're dealing with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
 *Note: CORE_PEER_GOSSIP_BOOTSTRAP, CORE_PEER_GOSSIP_ENDPOINT and CORE_PEER_GOSSIP_EXTERNALENDPOINT are critical for the Hyperledger Fabric Service Discovery to work.*  
 *Note: Volume dockersocket is used in order for the peer to have access to the docker daemon running on the host the peer is running, to be able to launch the chaincode container*  
 *Note: The chaincode container will be launched directly into Docker Daemon, and will not show up in Kubernetes.*  
@@ -1805,7 +1805,7 @@ spec:
           value: "hyperledgerpass"
 ```
 *Note: The peer uses our shared filesystem.*  
-*Note: Because we're handling with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
+*Note: Because we're dealing with transactions, its important that every pod is running in the same timezone. Pay attention to the TZ environment variable.*  
 *Note: CORE_PEER_GOSSIP_BOOTSTRAP, CORE_PEER_GOSSIP_ENDPOINT and CORE_PEER_GOSSIP_EXTERNALENDPOINT are critical for the Hyperledger Fabric Service Discovery to work.*  
 *Note: Volume dockersocket is used in order for the peer to have access to the docker daemon running on the host the peer is running, to be able to launch the chaincode container*  
 *Note: The chaincode container will be launched directly into Docker Daemon, and will not show up in Kubernetes.*  
@@ -1889,7 +1889,7 @@ exit
 ### Step 13: Join Channel
 
 - Org1MSP  
-Lets join Org1MSP to our channel:
+Let's join Org1MSP to our channel:
 ```sh
 kubectl exec -it fabric-tools -- /bin/bash
 export CHANNEL_NAME="channel1"
@@ -1899,14 +1899,14 @@ export FABRIC_CFG_PATH="/etc/hyperledger/fabric"
 export CORE_PEER_LOCALMSPID="Org1MSP"
 export CORE_PEER_MSPID="Org1MSP"
 export CORE_PEER_MSPCONFIGPATH="/fabric/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp"
-export CORE_PEER_ADDRESS="blockchain-org1peer1:30110"
 
+export CORE_PEER_ADDRESS="blockchain-org1peer1:30110"
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
 
 rm -rf /${CHANNEL_NAME}_newest.block
-export CORE_PEER_ADDRESS="blockchain-org1peer2:30110"
 
+export CORE_PEER_ADDRESS="blockchain-org1peer2:30110"
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
 
@@ -1914,7 +1914,7 @@ rm -rf /${CHANNEL_NAME}_newest.block
 exit
 ```
 - Org2MSP  
-Lets join Org2MSP to our channel:
+Let's join Org2MSP to our channel:
 ```sh
 kubectl exec -it fabric-tools -- /bin/bash
 export CHANNEL_NAME="channel1"
@@ -1924,14 +1924,14 @@ export FABRIC_CFG_PATH="/etc/hyperledger/fabric"
 export CORE_PEER_LOCALMSPID="Org2MSP"
 export CORE_PEER_MSPID="Org2MSP"
 export CORE_PEER_MSPCONFIGPATH="/fabric/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp"
-export CORE_PEER_ADDRESS="blockchain-org2peer1:30110"
 
+export CORE_PEER_ADDRESS="blockchain-org2peer1:30110"
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
 
 rm -rf /${CHANNEL_NAME}_newest.block
-export CORE_PEER_ADDRESS="blockchain-org2peer2:30110"
 
+export CORE_PEER_ADDRESS="blockchain-org2peer2:30110"
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
 
@@ -1939,7 +1939,7 @@ rm -rf /${CHANNEL_NAME}_newest.block
 exit
 ```
 - Org3MSP  
-Lets join Org3MSP to our channel:
+Let's join Org3MSP to our channel:
 ```sh
 kubectl exec -it fabric-tools -- /bin/bash
 export CHANNEL_NAME="channel1"
@@ -1949,14 +1949,14 @@ export FABRIC_CFG_PATH="/etc/hyperledger/fabric"
 export CORE_PEER_LOCALMSPID="Org3MSP"
 export CORE_PEER_MSPID="Org3MSP"
 export CORE_PEER_MSPCONFIGPATH="/fabric/crypto-config/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp"
-export CORE_PEER_ADDRESS="blockchain-org3peer1:30110"
 
+export CORE_PEER_ADDRESS="blockchain-org3peer1:30110"
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
 
 rm -rf /${CHANNEL_NAME}_newest.block
-export CORE_PEER_ADDRESS="blockchain-org3peer2:30110"
 
+export CORE_PEER_ADDRESS="blockchain-org3peer2:30110"
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
 
@@ -1964,7 +1964,7 @@ rm -rf /${CHANNEL_NAME}_newest.block
 exit
 ```
 - Org4MSP  
-Lets join Org4MSP to our channel:
+Let's join Org4MSP to our channel:
 ```sh
 kubectl exec -it fabric-tools -- /bin/bash
 export CHANNEL_NAME="channel1"
@@ -1974,14 +1974,14 @@ export FABRIC_CFG_PATH="/etc/hyperledger/fabric"
 export CORE_PEER_LOCALMSPID="Org4MSP"
 export CORE_PEER_MSPID="Org4MSP"
 export CORE_PEER_MSPCONFIGPATH="/fabric/crypto-config/peerOrganizations/org4.example.com/users/Admin@org4.example.com/msp"
-export CORE_PEER_ADDRESS="blockchain-org4peer1:30110"
 
+export CORE_PEER_ADDRESS="blockchain-org4peer1:30110"
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
 
 rm -rf /${CHANNEL_NAME}_newest.block
-export CORE_PEER_ADDRESS="blockchain-org4peer2:30110"
 
+export CORE_PEER_ADDRESS="blockchain-org4peer2:30110"
 peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME}
 peer channel join -b ${CHANNEL_NAME}_newest.block
 
@@ -1992,7 +1992,7 @@ exit
 ### Step 14: Install Chaincode
 
 - Org1MSP  
-Lets install our chaincode on Org1MSP Peers:
+Let's install our chaincode on Org1MSP Peers:
 ```sh
 kubectl exec -it fabric-tools -- /bin/bash
 cp -r /fabric/config/chaincode $GOPATH/src/
@@ -2011,7 +2011,7 @@ peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p chaincode
 exit
 ```
 - Org2MSP  
-Lets install our chaincode on Org2MSP Peers:
+Let's install our chaincode on Org2MSP Peers:
 ```sh
 kubectl exec -it fabric-tools -- /bin/bash
 cp -r /fabric/config/chaincode $GOPATH/src/
@@ -2030,7 +2030,7 @@ peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p chaincode
 exit
 ```
 - Org3MSP  
-Lets install our chaincode on Org3MSP Peers:
+Let's install our chaincode on Org3MSP Peers:
 ```sh
 kubectl exec -it fabric-tools -- /bin/bash
 cp -r /fabric/config/chaincode $GOPATH/src/
@@ -2049,7 +2049,7 @@ peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p chaincode
 exit
 ```
 - Org4MSP  
-Lets install our chaincode on Org4MSP Peers:
+Let's install our chaincode on Org4MSP Peers:
 ```sh
 kubectl exec -it fabric-tools -- /bin/bash
 cp -r /fabric/config/chaincode $GOPATH/src/
@@ -2106,6 +2106,8 @@ pod=$(kubectl get pods | grep blockchain-org4peer1 | awk '{print $1}')
 kubectl exec -it $pod -- peer channel update -f /fabric/Org4MSPanchors.tx -c channel1 -o blockchain-orderer:31010 
 ```
 *Note: This step is very important for the Hyperledger Fabric Service Discovery to work properly.*
+*Note: For each organization we only need to execute the peer channel update once.*  
+*Note: The command is executed on a peer that is on the same Organization as the Anchor file.*  
 
 ### Step 17: Deploy Hyperledger Explorer
 
@@ -2151,7 +2153,7 @@ Now we're going to apply the configuration:
 kubectl apply -f kubernetes/blockchain-explorer-db_deploy.yaml
 ```
 
-After that, we need to create the `Service` entry for our database. To do that lets create the file `kubernetes/blockchain-explorer-db_svc.yaml` as below:
+After that, we need to create the `Service` entry for our database. To do that let's create the file `kubernetes/blockchain-explorer-db_svc.yaml` as below:
 ```yaml
 apiVersion: v1
 kind: Service
@@ -2461,7 +2463,7 @@ spec:
 *Note: Again setting up the timezone as the reports might get impacted.*  
 *Note: This deployment will have access to the share filesystem as the startup script and config files are store there.*  
 
-Now its time to apply our deploy:
+Now its time to apply our `Deployment`:
 ```sh
 kubectl apply -f kubernetes/blockchain-explorer-app_deploy.yaml
 ```
@@ -2479,6 +2481,7 @@ Now, we're going to run 2 transactions. The first one we'll move 50 from `A` to 
 ```sh
 pod=$(kubectl get pods | grep blockchain-org1peer1 | awk '{print $1}')
 kubectl exec -it $pod -- /bin/bash
+
 peer chaincode invoke --peerAddresses blockchain-org1peer1:30110 --peerAddresses blockchain-org2peer1:30110 --peerAddresses blockchain-org3peer1:30110 --peerAddresses blockchain-org4peer1:30110 -o blockchain-orderer:31010 -C channel1 -n cc -c '{"Args":["invoke","a","b","50"]}'
 
 peer chaincode invoke --peerAddresses blockchain-org1peer1:30110 --peerAddresses blockchain-org2peer1:30110 --peerAddresses blockchain-org3peer1:30110 --peerAddresses blockchain-org4peer1:30110 -o blockchain-orderer:31010 -C channel1 -n cc -c '{"Args":["invoke","b","a","33"]}'
@@ -2487,6 +2490,7 @@ exit
 ```
 *Note: The invoke command is using --peerAddresses parameter four times, in order to send the transaction to at least one peer from each organization.*  
 *Note: The first transaction might take a little bit to go through.*  
+*Note: We're executing transaction on Org1MSP Peer1.*  
 
 Now we're going to check our balance. As stated before, we've started `A` with 300 and `B` with 600: 
 ```sh
@@ -2500,6 +2504,7 @@ peer chaincode query -C channel1 -n cc -c '{"Args":["query","b"]}'
 exit
 ```
 *Note: A should return 283 and B should return 617.*  
+*Note: We're executing transaction on Org1MSP Peer1.*  
 
 We can also check the network status as well as the transactions on Hyperledger Explorer:
 ```sh
