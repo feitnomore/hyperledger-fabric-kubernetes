@@ -2466,6 +2466,7 @@ spec:
 ```
 *Note: Again setting up the timezone as the reports might get impacted.*  
 *Note: This deployment will have access to the shared filesystem as the startup script and config files are store there.*  
+*Note: There are 3 environment variables here pointing our application to the previously created PostgreSQL service.*  
 
 Now its time to apply our `Deployment`:
 ```sh
