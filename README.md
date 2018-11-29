@@ -59,6 +59,7 @@ For the NFS Server we'll have:
 storage.local.parisi.biz
 ```
 *Note: Check [this link](https://www.howtoforge.com/nfs-server-and-client-on-centos-7) for a quick guide on NFS Server setup*  
+*Note: Each peer will have its own CouchDB as Ledger, meaning the data will be saved there, and not on this NFS Server.*  
 
 The image below represents the environment infrastructure:  
 
