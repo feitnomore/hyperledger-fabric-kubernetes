@@ -43,6 +43,7 @@ zookeeper3.local.parisi.biz
 *Note: Zookeeper is needed by Apache Kafka.*  
 *Note: Apache Kafka should be 1.0 for Hyperledger compatibility.*  
 *Note: Check [this link](https://dzone.com/articles/how-to-setup-kafka-cluster) for a quick guide on Kafka/Zookeeper cluster.*  
+*Note: We're using 3 Zookeeper nodes as the minimum stated in [Hyperledger Fabric Kafka Documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.3/kafka.html).*  
 
 For Apache Kafka we'll have the following machines:
 ```sh
@@ -52,7 +53,8 @@ kafka3.local.parisi.biz
 kafka4.local.parisi.biz
 ```
 *Note: We're using Kafka 1.0 version for Hyperledger compatibility.*  
-*Note: Check [this link](https://dzone.com/articles/how-to-setup-kafka-cluster) for a quick guide on Kafka/Zookeeper cluster.* 
+*Note: Check [this link](https://dzone.com/articles/how-to-setup-kafka-cluster) for a quick guide on Kafka/Zookeeper cluster.*  
+*Note: We're using 4 Kafka nodes as the minimum stated in [Hyperledger Fabric Kafka Documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.3/kafka.html).*  
 
 For the NFS Server we'll have:
 ```sh
